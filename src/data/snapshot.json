@@ -1,11 +1,11 @@
 {
   "meta": {
-    "syncedAt": "2026-08-01T15:42:56.323Z",
+    "syncedAt": "2026-08-01T19:57:06.656Z",
     "source": {
       "repo": "localmodel.run",
       "path": "src/data/browser-models.json",
       "branch": "main",
-      "commit": "ea7ba9fb2fff92042988322d80d271e28c8a6afe"
+      "commit": "ac2905afb894144b5fb76000bee18531390043a3"
     }
   },
   "models": [
@@ -778,6 +778,7 @@
       },
       "variants": {
         "fp16": 163234740,
+        "fp32": 325532232,
         "q4": 305215966,
         "q4f16": 154586422,
         "q8": 92361116,
