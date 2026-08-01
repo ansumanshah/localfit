@@ -1,6 +1,6 @@
 {
   "name": "localfit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "The decision layer for in-browser AI: given a model id, tells you if this browser can run it, over which backend, which quant variant, and exactly how many bytes it will download.",
   "keywords": [
     "browser-ai",
