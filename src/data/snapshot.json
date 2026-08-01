@@ -1,11 +1,11 @@
 {
   "meta": {
-    "syncedAt": "2026-08-01T13:38:10.107Z",
+    "syncedAt": "2026-08-01T15:42:56.323Z",
     "source": {
       "repo": "localmodel.run",
       "path": "src/data/browser-models.json",
       "branch": "main",
-      "commit": "d59de067f22f9df4fbdb2c2ec949edabf2360d7c"
+      "commit": "ea7ba9fb2fff92042988322d80d271e28c8a6afe"
     }
   },
   "models": [
@@ -454,21 +454,21 @@
       "headline": {
         "webgpu": {
           "variant": "q4f16",
-          "bytes": 275572080
+          "bytes": 223446634
         },
         "wasm": {
           "variant": "uint8",
-          "bytes": 365535084
+          "bytes": 274966162
         }
       },
       "variants": {
-        "bnb4": 373270176,
-        "fp16": 723967244,
-        "fp32": 1445577323,
-        "q4": 392765234,
-        "q4f16": 275572080,
-        "q8": 731070050,
-        "uint8": 365535084
+        "bnb4": 319312207,
+        "fp16": 544004842,
+        "fp32": 1085912345,
+        "q4": 333249173,
+        "q4f16": 223446634,
+        "q8": 549932264,
+        "uint8": 274966162
       },
       "pipeline_task": null
     },
@@ -531,21 +531,21 @@
       "headline": {
         "webgpu": {
           "variant": "q4f16",
-          "bytes": 713986906
+          "bytes": 582232182
         },
         "wasm": {
           "variant": "uint8",
-          "bytes": 1060893077
+          "bytes": 829497938
         }
       },
       "variants": {
-        "bnb4": 878572190,
-        "fp16": 2109209960,
-        "fp32": 4215069940,
-        "q4": 939233135,
-        "q4f16": 713986906,
-        "q8": 2121786031,
-        "uint8": 1060893077
+        "bnb4": 744202849,
+        "fp16": 1648741163,
+        "fp32": 3294625906,
+        "q4": 790572038,
+        "q4f16": 582232182,
+        "q8": 1658995841,
+        "uint8": 829497938
       },
       "pipeline_task": null
     },
@@ -558,20 +558,20 @@
       "headline": {
         "webgpu": {
           "variant": "fp16",
-          "bytes": 133075065
+          "bytes": 76113088
         },
         "wasm": {
           "variant": "uint8",
-          "bytes": 70064760
+          "bytes": 40844261
         }
       },
       "variants": {
-        "bnb4": 179961562,
-        "fp16": 133075065,
-        "fp32": 265097817,
-        "q4": 181508962,
-        "q8": 140129401,
-        "uint8": 70064760
+        "bnb4": 94702865,
+        "fp16": 76113088,
+        "fp32": 151458819,
+        "q4": 95734369,
+        "q8": 81688449,
+        "uint8": 40844261
       },
       "pipeline_task": "automatic-speech-recognition"
     },
@@ -584,20 +584,20 @@
       "headline": {
         "webgpu": {
           "variant": "fp16",
-          "bytes": 244095639
+          "bytes": 146060430
         },
         "wasm": {
           "variant": "uint8",
-          "bytes": 126969816
+          "bytes": 76894657
         }
       },
       "variants": {
-        "bnb4": 259584515,
-        "fp16": 244095639,
-        "fp32": 486637100,
-        "q4": 263711699,
-        "q8": 253939513,
-        "uint8": 126969816
+        "bnb4": 139623558,
+        "fp16": 146060430,
+        "fp32": 290989606,
+        "q4": 142374870,
+        "q8": 153789241,
+        "uint8": 76894657
       },
       "pipeline_task": "automatic-speech-recognition"
     },
@@ -610,20 +610,20 @@
       "headline": {
         "webgpu": {
           "variant": "fp16",
-          "bytes": 764668995
+          "bytes": 485190832
         },
         "wasm": {
           "variant": "uint8",
-          "bytes": 390729822
+          "bytes": 249077066
         }
       },
       "variants": {
-        "bnb4": 504456859,
-        "fp16": 764668995,
-        "fp32": 1526268085,
-        "q4": 523033363,
-        "q8": 781459393,
-        "uint8": 390729822
+        "bnb4": 286947383,
+        "fp16": 485190832,
+        "fp32": 968150171,
+        "q4": 299331431,
+        "q8": 498153977,
+        "uint8": 249077066
       },
       "pipeline_task": "automatic-speech-recognition"
     },
@@ -636,21 +636,21 @@
       "headline": {
         "webgpu": {
           "variant": "q4f16",
-          "bytes": 143372082
+          "bytes": 101727600
         },
         "wasm": {
           "variant": "uint8",
-          "bytes": 101977848
+          "bytes": 62916138
         }
       },
       "variants": {
-        "bnb4": 163752247,
-        "fp16": 278661449,
-        "fp32": 401665040,
-        "q4": 168076857,
-        "q4f16": 143372082,
-        "q8": 204051333,
-        "uint8": 101977848
+        "bnb4": 94770106,
+        "fp16": 201203834,
+        "fp32": 247030126,
+        "q4": 97537620,
+        "q4f16": 101727600,
+        "q8": 125927995,
+        "uint8": 62916138
       },
       "pipeline_task": "automatic-speech-recognition"
     },
@@ -663,21 +663,21 @@
       "headline": {
         "webgpu": {
           "variant": "q4f16",
-          "bytes": 749364426
+          "bytes": 563479095
         },
         "wasm": {
           "variant": "uint8",
-          "bytes": 1511299506
+          "bytes": 1084758905
         }
       },
       "variants": {
-        "bnb4": 1033192175,
-        "fp16": 1936341699,
-        "fp32": 3871708520,
-        "q4": 1084799335,
-        "q4f16": 749364426,
-        "q8": 3022598891,
-        "uint8": 1511299506
+        "bnb4": 713216977,
+        "fp16": 1618569942,
+        "fp32": 3236346357,
+        "q4": 759089997,
+        "q4f16": 563479095,
+        "q8": 2169517721,
+        "uint8": 1084758905
       },
       "pipeline_task": "automatic-speech-recognition"
     },
@@ -690,21 +690,21 @@
       "headline": {
         "webgpu": {
           "variant": "q4f16",
-          "bytes": 80194709
+          "bytes": 56024215
         },
         "wasm": {
           "variant": "uint8",
-          "bytes": 46853167
+          "bytes": 28109400
         }
       },
       "variants": {
-        "bnb4": 97471229,
-        "fp16": 128811026,
-        "fp32": 182977775,
-        "q4": 99024857,
-        "q4f16": 80194709,
-        "q8": 93777778,
-        "uint8": 46853167
+        "bnb4": 54388824,
+        "fp16": 91770581,
+        "fp32": 109109881,
+        "q4": 55382958,
+        "q4f16": 56024215,
+        "q8": 56290294,
+        "uint8": 28109400
       },
       "pipeline_task": "automatic-speech-recognition"
     },
@@ -1065,7 +1065,7 @@
         "fp32": 176153355,
         "q8": 44403226
       },
-      "pipeline_task": "background-removal"
+      "pipeline_task": null
     },
     {
       "id": "modnet",
