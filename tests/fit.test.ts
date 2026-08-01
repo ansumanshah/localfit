@@ -214,6 +214,99 @@ describe("fit: 'tight' verdict built on a capped deviceMemory reading", () => {
   });
 });
 
+describe("fit: requested variant override", () => {
+  test("scores the requested variant's measured bytes instead of the headline pick", async () => {
+    const model = getModel(MODEL_ID)!;
+    expect(model.variants.fp32).toBeDefined(); // sanity: fixture assumption holds
+    const plan = await fit(MODEL_ID, { env: makeEnv(), variant: "fp32" });
+    expect(plan.dtype).toBe("fp32");
+    expect(plan.downloadBytes).toBe(model.variants.fp32);
+    expect(plan.config).toEqual({ device: "webgpu", dtype: "fp32" });
+    expect(plan.reasons.some((r) => r.includes("requested fp32 build"))).toBe(true);
+  });
+
+  test("the verdict is computed on the requested variant's bytes, not the headline's", async () => {
+    const model = getModel(MODEL_ID)!;
+    // A heap where the q4f16 headline (~112 MB) fits comfortably but the
+    // fp32 build (~515 MB) exceeds the 60% tight threshold.
+    const heap = Math.floor(model.variants.fp32 / 0.61);
+    expect(model.headline.webgpu.bytes).toBeLessThan(heap * 0.6); // sanity
+    const env = makeEnv({ memory: { jsHeapSizeLimitBytes: heap, deviceMemoryGb: null } });
+    expect((await fit(MODEL_ID, { env })).verdict).toBe("yes");
+    expect((await fit(MODEL_ID, { env, variant: "fp32" })).verdict).toBe("tight");
+  });
+
+  test("an unmeasured variant name keeps the headline behavior, with a reason", async () => {
+    const model = getModel(MODEL_ID)!;
+    const plan = await fit(MODEL_ID, { env: makeEnv(), variant: "q3_k_m" });
+    expect(plan.dtype).toBe(model.headline.webgpu.variant);
+    expect(plan.downloadBytes).toBe(model.headline.webgpu.bytes);
+    expect(plan.reasons.some((r) => r.includes('"q3_k_m"') && r.includes("headline"))).toBe(true);
+  });
+
+  test("a requested non-headline f16 variant survives the no-shader-f16 auto-swap, with a warning", async () => {
+    const model = getModel(MODEL_ID)!;
+    expect(model.headline.webgpu.variant).not.toBe("fp16"); // sanity: fp16 is a genuine override
+    const plan = await fit(MODEL_ID, {
+      env: makeEnv({ webgpu: { shaderF16: false } }),
+      variant: "fp16",
+    });
+    expect(plan.dtype).toBe("fp16");
+    expect(plan.downloadBytes).toBe(model.variants.fp16);
+    expect(plan.reasons.some((r) => r.includes("kept as requested"))).toBe(true);
+  });
+
+  test("requesting the headline variant itself is a no-op: default plan, auto-swap included", async () => {
+    const model = getModel(MODEL_ID)!;
+    // With shader-f16 absent, echoing the q4f16 headline back in must still
+    // get the safety swap a plain fit() call would apply.
+    const env = makeEnv({ webgpu: { shaderF16: false } });
+    const plain = await fit(MODEL_ID, { env });
+    const echoed = await fit(MODEL_ID, { env, variant: model.headline.webgpu.variant });
+    expect(echoed.dtype).toBe(plain.dtype);
+    expect(echoed.downloadBytes).toBe(plain.downloadBytes);
+    expect(echoed.reasons).toEqual(plain.reasons);
+  });
+
+  test("a variant name inherited from Object.prototype is treated as unmeasured, never read", async () => {
+    const model = getModel(MODEL_ID)!;
+    for (const name of ["constructor", "__proto__", "toString", "hasOwnProperty"]) {
+      const plan = await fit(MODEL_ID, { env: makeEnv(), variant: name });
+      expect(plan.dtype).toBe(model.headline.webgpu.variant);
+      expect(plan.downloadBytes).toBe(model.headline.webgpu.bytes);
+      expect(typeof plan.downloadBytes).toBe("number");
+      expect(plan.reasons.some((r) => r.includes("not in this model's measured variants"))).toBe(
+        true,
+      );
+    }
+  });
+
+  test("the hard-no path sizes a requested measured variant and says so", async () => {
+    const model = getModel(MODEL_ID)!;
+    const plan = await fit(MODEL_ID, {
+      env: noWebGpuEnv(),
+      runtime: "webllm",
+      variant: "fp32",
+    });
+    expect(plan.verdict).toBe("no");
+    expect(plan.dtype).toBe("fp32");
+    expect(plan.downloadBytes).toBe(model.variants.fp32);
+    expect(plan.reasons.some((r) => r.includes("requested fp32 build"))).toBe(true);
+  });
+
+  test("the hard-no path falls back to the headline for an unmeasured variant name, with a reason", async () => {
+    const model = getModel(MODEL_ID)!;
+    const plan = await fit(MODEL_ID, {
+      env: noWebGpuEnv(),
+      runtime: "webllm",
+      variant: "bogus-name",
+    });
+    expect(plan.dtype).toBe(model.headline.webgpu.variant);
+    expect(plan.downloadBytes).toBe(model.headline.webgpu.bytes);
+    expect(plan.reasons.some((r) => r.includes('"bogus-name"'))).toBe(true);
+  });
+});
+
 describe("fit: config shape", () => {
   test("transformers.js gets a {device, dtype} config", async () => {
     const plan = await fit(MODEL_ID, { env: makeEnv(), runtime: "transformers.js" });

@@ -30,14 +30,32 @@ export async function fit(modelId: string, opts: FitOptions = {}): Promise<FitPl
   if (backendPlan.hardNo) {
     reasons.push(backendPlan.reason);
     const headline = model.headline.webgpu;
+    let noVariant = headline.variant;
+    let noBytes = headline.bytes;
+    if (opts.variant != null && opts.variant !== headline.variant) {
+      const requestedBytes = Object.hasOwn(model.variants, opts.variant)
+        ? model.variants[opts.variant]
+        : undefined;
+      if (requestedBytes !== undefined) {
+        noVariant = opts.variant;
+        noBytes = requestedBytes;
+        reasons.push(
+          `Sizing the requested ${noVariant} build (${formatBytes(noBytes)}) instead of the ${headline.variant} headline pick.`,
+        );
+      } else {
+        reasons.push(
+          `Requested variant "${opts.variant}" is not in this model's measured variants table; the ${headline.variant} headline build was sized instead.`,
+        );
+      }
+    }
     return {
       verdict: "no",
       backend: backendPlan.backend,
-      dtype: headline.variant,
-      downloadBytes: headline.bytes,
+      dtype: noVariant,
+      downloadBytes: noBytes,
       model: model.hf_repo,
       reasons,
-      config: buildConfig(opts.runtime, backendPlan.backend, headline.variant),
+      config: buildConfig(opts.runtime, backendPlan.backend, noVariant),
     };
   }
 
@@ -59,8 +77,39 @@ export async function fit(modelId: string, opts: FitOptions = {}): Promise<FitPl
   let variant = headline.variant;
   let bytes = headline.bytes;
 
+  // An explicitly requested non-headline variant wins over the headline
+  // pick, and over the shader-f16 auto-swap below: the caller has runtime
+  // knowledge this package does not (e.g. the headline build is
+  // verified-broken there). Requesting the headline variant itself is a
+  // no-op, so a caller echoing plan.dtype back in never loses the swap.
+  // Object.hasOwn, not a bare read: variants is a JSON-parsed plain object,
+  // and a name like "constructor" would otherwise resolve to an inherited
+  // Object.prototype member and corrupt the plan.
+  let requested = false;
+  if (opts.variant != null && opts.variant !== headline.variant) {
+    const requestedBytes = Object.hasOwn(model.variants, opts.variant)
+      ? model.variants[opts.variant]
+      : undefined;
+    if (requestedBytes !== undefined) {
+      requested = true;
+      variant = opts.variant;
+      bytes = requestedBytes;
+      reasons.push(
+        `Scoring the requested ${variant} build (${formatBytes(bytes)}) instead of the ${headline.variant} headline pick.`,
+      );
+    } else {
+      reasons.push(
+        `Requested variant "${opts.variant}" is not in this model's measured variants table; the ${variant} headline build was scored instead.`,
+      );
+    }
+  }
+
   if (backend === "webgpu") {
-    if (env.webgpu.shaderF16 === false && isF16Variant(variant)) {
+    if (requested && env.webgpu.shaderF16 === false && isF16Variant(variant)) {
+      reasons.push(
+        `This adapter has no shader-f16 support, which the requested ${variant} build needs; it was kept as requested, but its WebGPU shaders may fail to compile.`,
+      );
+    } else if (env.webgpu.shaderF16 === false && isF16Variant(variant)) {
       // Choosing the smallest non-f16 variant here is an untested assumption:
       // q8/uint8 builds are conventionally WASM-oriented, not verified as the
       // best WebGPU fallback. Revisit once the data model tags which variants
@@ -79,7 +128,7 @@ export async function fit(modelId: string, opts: FitOptions = {}): Promise<FitPl
       }
     } else if (env.webgpu.shaderF16 === null && isF16Variant(variant)) {
       reasons.push(
-        `shader-f16 support could not be determined (no WebGPU adapter available); the ${variant} headline variant, which needs it, was kept anyway.`,
+        `shader-f16 support could not be determined (no WebGPU adapter available); the ${variant} build, which needs it, was kept anyway.`,
       );
     }
   }

@@ -136,6 +136,7 @@ interface Env {
 interface FitOptions {
   env?: Env; // skip probe() and use this instead
   runtime?: "transformers.js" | "wllama" | "webllm";
+  variant?: string; // score this measured variant instead of the headline pick
 }
 
 interface FitPlan {
@@ -150,6 +151,8 @@ interface FitPlan {
 ```
 
 `config` is fully specified only for `transformers.js` (`{ device, dtype }`). wllama and WebLLM have their own load-option shapes this package has not verified against a real integration yet, so for those `config` carries just `{ backend }` rather than an invented shape.
+
+`variant` is for callers that load a different build than the catalog headline, usually because they verified the headline is broken at runtime (Kokoro's q4f16 is audibly degraded over WebGPU, so localmodel.run's live demo loads fp32). The verdict and `downloadBytes` are then computed on that variant's measured size; the bytes always come from the catalog, never from the caller. A requested non-headline variant also skips the shader-f16 auto-swap, with a warning in `reasons` instead. Naming the headline variant itself is a no-op: you get the default plan, auto-swap included, so echoing a previous `plan.dtype` back in is always safe. A name not in the model's `variants` table falls back to the headline and says so in `reasons`.
 
 ### `models(): ModelInfo[]` / `getModel(id: string): ModelInfo | undefined`
 
