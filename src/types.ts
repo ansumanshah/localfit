@@ -59,6 +59,17 @@ export type RuntimeName = "transformers.js" | "wllama" | "webllm";
 export interface FitOptions {
   env?: Env;
   runtime?: RuntimeName;
+  /**
+   * Score a specific variant from the model's measured `variants` table
+   * instead of the chosen backend's headline pick. For callers that have
+   * verified the headline build is broken at runtime and load a different
+   * one (e.g. Kokoro's q4f16 is audibly degraded over WebGPU, so the page
+   * loads fp32). The bytes still come from the measured catalog, never from
+   * the caller. Naming the headline variant itself is a no-op (the default
+   * plan, including the shader-f16 auto-swap); a name that is not in the
+   * table keeps the headline behavior and says so in `reasons`.
+   */
+  variant?: string;
 }
 
 export interface FitPlan {

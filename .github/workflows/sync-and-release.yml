@@ -15,6 +15,11 @@ on:
     # so a same-day catalog refresh is picked up in the same pass.
     - cron: "0 9 * * 1"
   workflow_dispatch:
+    inputs:
+      force_release:
+        description: "Release even if the snapshot is unchanged (for code changes already on main)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write # push the version bump + tag, create the release
@@ -58,28 +63,32 @@ jobs:
           fi
 
       - name: Gates (typecheck, lint, fmt, tests, build, size budget)
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.diff.outputs.changed == 'true' || inputs.force_release == true
         run: bun run check && bun run build && bun run size-check
 
       - name: Commit, bump patch, tag
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.diff.outputs.changed == 'true' || inputs.force_release == true
         id: bump
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          commit=$(bun -e "console.log(require('./src/data/snapshot.json').meta.source.commit.slice(0,7))")
-          git add src/data/snapshot.json
-          git commit -m "chore: sync snapshot from localmodel.run@${commit}"
+          # A forced release with an unchanged snapshot has nothing to commit
+          # here: it releases whatever code is already on main.
+          if [ "${{ steps.diff.outputs.changed }}" = "true" ]; then
+            commit=$(bun -e "console.log(require('./src/data/snapshot.json').meta.source.commit.slice(0,7))")
+            git add src/data/snapshot.json
+            git commit -m "chore: sync snapshot from localmodel.run@${commit}"
+          fi
           version=$(npm version patch -m "chore: release v%s")
           echo "version=$version" >> "$GITHUB_OUTPUT"
           git push --follow-tags
 
       - name: Publish to npm (OIDC, with provenance)
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.diff.outputs.changed == 'true' || inputs.force_release == true
         run: npm publish --provenance --access public
 
       - name: GitHub release
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.diff.outputs.changed == 'true' || inputs.force_release == true
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh release create "${{ steps.bump.outputs.version }}" --generate-notes
