@@ -1,0 +1,85 @@
+# Weekly snapshot freshness: re-sync the bundled browser-models snapshot from
+# localmodel.run@main and, ONLY when the models payload actually changed, cut
+# a patch release and publish to npm.
+#
+# Publishing auth: npm Trusted Publishing (OIDC). No token is stored in this
+# repo; npmjs.com is configured (package settings -> Trusted Publisher) to
+# accept publishes from this exact repository + workflow file. Until that is
+# configured by the package owner, the publish step fails closed with a clear
+# error and nothing else is affected.
+name: sync-and-release
+
+on:
+  schedule:
+    # Mondays 09:00 UTC, two hours after localmodel.run's weekly data cron,
+    # so a same-day catalog refresh is picked up in the same pass.
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write # push the version bump + tag, create the release
+  id-token: write # npm trusted publishing (OIDC) + provenance
+
+concurrency:
+  group: sync-and-release
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      # npm CLI for the OIDC publish; registry-url makes npm use the OIDC flow.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+
+      - run: bun install --frozen-lockfile
+
+      - name: Sync snapshot from localmodel.run@main
+        run: bun run sync-data
+
+      # meta.syncedAt changes on every sync, so diff only the models payload.
+      - name: Detect a real models change
+        id: diff
+        run: |
+          new=$(bun -e "const s=require('./src/data/snapshot.json');console.log(Bun.hash(JSON.stringify(s.models)))")
+          old=$(git show HEAD:src/data/snapshot.json | bun -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(Bun.hash(JSON.stringify(JSON.parse(s).models))))")
+          echo "old=$old new=$new"
+          if [ "$new" = "$old" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            git checkout -- src/data/snapshot.json
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Gates (typecheck, lint, fmt, tests, build, size budget)
+        if: steps.diff.outputs.changed == 'true'
+        run: bun run check && bun run build && bun run size-check
+
+      - name: Commit, bump patch, tag
+        if: steps.diff.outputs.changed == 'true'
+        id: bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          commit=$(bun -e "console.log(require('./src/data/snapshot.json').meta.source.commit.slice(0,7))")
+          git add src/data/snapshot.json
+          git commit -m "chore: sync snapshot from localmodel.run@${commit}"
+          version=$(npm version patch -m "chore: release v%s")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          git push --follow-tags
+
+      - name: Publish to npm (OIDC, with provenance)
+        if: steps.diff.outputs.changed == 'true'
+        run: npm publish --provenance --access public
+
+      - name: GitHub release
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${{ steps.bump.outputs.version }}" --generate-notes
