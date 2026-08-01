@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "pedantic": "off"
+  },
+  "env": {
+    "builtin": true
+  },
+  "rules": {
+    "no-underscore-dangle": "off"
+  },
+  "ignorePatterns": ["dist", "node_modules", "**/src/data/snapshot.json"]
+}

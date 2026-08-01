@@ -1,0 +1,66 @@
+{
+  "name": "localfit",
+  "version": "0.1.0",
+  "description": "The decision layer for in-browser AI: given a model id, tells you if this browser can run it, over which backend, which quant variant, and exactly how many bytes it will download.",
+  "keywords": [
+    "browser-ai",
+    "llm",
+    "on-device-ai",
+    "transformers.js",
+    "wasm",
+    "webgpu",
+    "webllm",
+    "wllama"
+  ],
+  "homepage": "https://github.com/ansumanshah/localfit#readme",
+  "bugs": {
+    "url": "https://github.com/ansumanshah/localfit/issues"
+  },
+  "license": "MIT",
+  "author": "Ansuman Shah <ansumanshah@gmail.com> (https://github.com/ansumanshah)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ansumanshah/localfit.git"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "prepublishOnly": "bun run check && bun run build && bun run size-check",
+    "build": "bun scripts/build.ts",
+    "sync-data": "bun scripts/sync-data.ts",
+    "size-check": "bun scripts/size-check.ts",
+    "test": "bun test",
+    "lint": "oxlint .",
+    "fmt": "oxfmt .",
+    "fmt:check": "oxfmt --check .",
+    "typecheck": "tsc --noEmit",
+    "check": "bun run typecheck && bun run lint && bun run fmt:check && bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.14",
+    "@types/node": "^26.1.2",
+    "@webgpu/types": "^0.1.71",
+    "oxfmt": "^0.61.0",
+    "oxlint": "^1.76.0",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,1403 @@
+{
+  "meta": {
+    "syncedAt": "2026-08-01T13:38:10.107Z",
+    "source": {
+      "repo": "localmodel.run",
+      "path": "src/data/browser-models.json",
+      "branch": "main",
+      "commit": "d59de067f22f9df4fbdb2c2ec949edabf2360d7c"
+    }
+  },
+  "models": [
+    {
+      "id": "smollm2-135m-instruct",
+      "name": "SmolLM2-135M-Instruct",
+      "hf_repo": "HuggingFaceTB/SmolLM2-135M-Instruct",
+      "task": "text-generation",
+      "params_m": 134.5,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 117691126
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 137147981
+        }
+      },
+      "variants": {
+        "bnb4": 175434623,
+        "fp16": 270267067,
+        "fp32": 540345794,
+        "q4": 182068553,
+        "q4f16": 117691126,
+        "q8": 274295848,
+        "uint8": 137147981
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "smollm2-360m-instruct",
+      "name": "SmolLM2-360M-Instruct",
+      "hf_repo": "HuggingFaceTB/SmolLM2-360M-Instruct",
+      "task": "text-generation",
+      "params_m": 361.8,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 272737275
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 364564671
+        }
+      },
+      "variants": {
+        "bnb4": 368284174,
+        "fp16": 724891911,
+        "fp32": 1449582810,
+        "q4": 387943246,
+        "q4f16": 272737275,
+        "q8": 729129229,
+        "uint8": 364564671
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "gemma-3-270m-it",
+      "name": "Gemma-3-270M-it",
+      "hf_repo": "onnx-community/gemma-3-270m-it-ONNX",
+      "task": "text-generation",
+      "params_m": 268.1,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 272956893
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 545274884
+        }
+      },
+      "variants": {
+        "fp16": 570135451,
+        "fp32": 1139686504,
+        "q4": 323175770,
+        "q4f16": 272956893,
+        "q8": 545274884
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "qwen2.5-0.5b-instruct",
+      "name": "Qwen2.5-0.5B-Instruct",
+      "hf_repo": "onnx-community/Qwen2.5-0.5B-Instruct",
+      "task": "text-generation",
+      "params_m": 494,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 483003582
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 512096636
+        }
+      },
+      "variants": {
+        "bnb4": 763794004,
+        "fp16": 997354499,
+        "fp32": 1993796793,
+        "q4": 786156820,
+        "q4f16": 483003582,
+        "q8": 1024193114,
+        "uint8": 512096636
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "llama-3.2-1b-instruct",
+      "name": "Llama-3.2-1B-Instruct",
+      "hf_repo": "onnx-community/Llama-3.2-1B-Instruct",
+      "task": "text-generation",
+      "params_m": 1235.8,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 1089755422
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 1236654010
+        }
+      },
+      "variants": {
+        "bnb4": 1598832302,
+        "fp16": 2090026952,
+        "fp32": 2082653372,
+        "q4": 1692821112,
+        "q4f16": 1089755422,
+        "q8": 2473307902,
+        "uint8": 1236654010
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "qwen3-0.6b",
+      "name": "Qwen3-0.6B",
+      "hf_repo": "onnx-community/Qwen3-0.6B-ONNX",
+      "task": "text-generation",
+      "params_m": 751.63,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 569789750
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 617687575
+        }
+      },
+      "variants": {
+        "bnb4": 891573033,
+        "fp16": 1202829402,
+        "q4": 919096585,
+        "q4f16": 569789750,
+        "q8": 1235375053,
+        "uint8": 617687575
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "qwen2.5-1.5b-instruct",
+      "name": "Qwen2.5-1.5B-Instruct",
+      "hf_repo": "onnx-community/Qwen2.5-1.5B-Instruct",
+      "task": "text-generation",
+      "params_m": 1543.71,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 1221878940
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 1578954395
+        }
+      },
+      "variants": {
+        "bnb4": 1705680982,
+        "fp16": 3105275452,
+        "fp32": 6209469491,
+        "q4": 1787566590,
+        "q4f16": 1221878940,
+        "q8": 3157908586,
+        "uint8": 1578954395
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "deepseek-r1-distill-qwen-1.5b",
+      "name": "DeepSeek-R1-Distill-Qwen-1.5B",
+      "hf_repo": "onnx-community/DeepSeek-R1-Distill-Qwen-1.5B-ONNX",
+      "task": "text-generation",
+      "params_m": 1777.09,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 1369397579
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 1845367473
+        }
+      },
+      "variants": {
+        "bnb4": 1869990808,
+        "fp16": 3605547692,
+        "fp32": 7175991958,
+        "q4": 1966462264,
+        "q4f16": 1369397579,
+        "q8": 3690734849,
+        "uint8": 1845367473
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "gemma-3-1b-it",
+      "name": "Gemma-3-1B-it",
+      "hf_repo": "onnx-community/gemma-3-1b-it-ONNX",
+      "task": "text-generation",
+      "params_m": 999.89,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 763529245
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 1001482078
+        }
+      },
+      "variants": {
+        "bnb4": 1602007661,
+        "fp16": 2033972730,
+        "fp32": 2070575091,
+        "q4": 859454179,
+        "q4f16": 763529245,
+        "q8": 2527433531,
+        "uint8": 1001482078
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "lfm2.5-350m",
+      "name": "LFM2.5-350M",
+      "hf_repo": "onnx-community/LFM2.5-350M-ONNX",
+      "task": "text-generation",
+      "params_m": 354.48,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 255148587
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 510117461
+        }
+      },
+      "variants": {
+        "fp16": 725490555,
+        "fp32": 1450841916,
+        "q4": 293813394,
+        "q4f16": 255148587,
+        "q8": 510117461
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "granite-4.0-350m",
+      "name": "Granite-4.0-350M",
+      "hf_repo": "onnx-community/granite-4.0-350m-ONNX-web",
+      "task": "text-generation",
+      "params_m": 352.38,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 350484597
+        },
+        "wasm": {
+          "variant": "q4f16",
+          "bytes": 350484597
+        }
+      },
+      "variants": {
+        "fp16": 709157057,
+        "fp32": 1418109704,
+        "q4": 575912398,
+        "q4f16": 350484597
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "bonsai-1.7b",
+      "name": "Bonsai-1.7B",
+      "hf_repo": "onnx-community/Bonsai-1.7B-ONNX",
+      "task": "text-generation",
+      "params_m": 1720.03,
+      "headline": {
+        "webgpu": {
+          "variant": "q4",
+          "bytes": 1119428094
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 2006258923
+        }
+      },
+      "variants": {
+        "q4": 1119428094,
+        "q8": 2006258923
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "phi-3.5-mini",
+      "name": "Phi-3.5-mini-instruct",
+      "hf_repo": "onnx-community/Phi-3.5-mini-instruct-onnx-web",
+      "task": "text-generation",
+      "params_m": 3821.08,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 2317473274
+        },
+        "wasm": {
+          "variant": "q4f16",
+          "bytes": 2317473274
+        }
+      },
+      "variants": {
+        "q4f16": 2317473274
+      },
+      "pipeline_task": "text-generation"
+    },
+    {
+      "id": "gemma-4-e2b-it",
+      "name": "Gemma-4-E2B-it",
+      "hf_repo": "onnx-community/gemma-4-E2B-it-ONNX",
+      "task": "multimodal",
+      "params_m": 5123.18,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 3381966758
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 3101630901
+        }
+      },
+      "variants": {
+        "fp16": 3827754603,
+        "fp32": 5530277394,
+        "q4": 3930062458,
+        "q4f16": 3381966758,
+        "q8": 3101630901
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "gemma-4-e4b-it",
+      "name": "Gemma-4-E4B-it",
+      "hf_repo": "onnx-community/gemma-4-E4B-it-ONNX",
+      "task": "multimodal",
+      "params_m": 7996.16,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 4366542985
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 3418704565
+        }
+      },
+      "variants": {
+        "fp16": 4363908079,
+        "fp32": 6543747885,
+        "q4": 4240529338,
+        "q4f16": 4366542985,
+        "q8": 3418704565
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "janus-pro-1b",
+      "name": "Janus-Pro-1B",
+      "hf_repo": "onnx-community/Janus-Pro-1B-ONNX",
+      "task": "multimodal",
+      "params_m": 2076.64,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 1941567247
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 2269873869
+        }
+      },
+      "variants": {
+        "bnb4": 2873668114,
+        "fp16": 4519051913,
+        "fp32": 9037350507,
+        "q4": 2985705893,
+        "q4f16": 1941567247,
+        "q8": 4539747577,
+        "uint8": 2269873869
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "smolvlm-256m-instruct",
+      "name": "SmolVLM-256M-Instruct",
+      "hf_repo": "HuggingFaceTB/SmolVLM-256M-Instruct",
+      "task": "vision-language",
+      "params_m": 256.5,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 188843109
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 259855437
+        }
+      },
+      "variants": {
+        "bnb4": 249731074,
+        "fp16": 514479822,
+        "fp32": 1028498218,
+        "q4": 263889326,
+        "q4f16": 188843109,
+        "q8": 519710718,
+        "uint8": 259855437
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "florence-2-base-ft",
+      "name": "Florence-2-base-ft",
+      "hf_repo": "onnx-community/Florence-2-base-ft",
+      "task": "vision-language",
+      "params_m": 231.6,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 275572080
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 365535084
+        }
+      },
+      "variants": {
+        "bnb4": 373270176,
+        "fp16": 723967244,
+        "fp32": 1445577323,
+        "q4": 392765234,
+        "q4f16": 275572080,
+        "q8": 731070050,
+        "uint8": 365535084
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "qwen3.5-0.8b",
+      "name": "Qwen3.5-0.8B",
+      "hf_repo": "onnx-community/Qwen3.5-0.8B-ONNX",
+      "task": "vision-language",
+      "params_m": 873.44,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 646838112
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 1291007603
+        }
+      },
+      "variants": {
+        "fp16": 2220256556,
+        "fp32": 3414640924,
+        "q4": 717652150,
+        "q4f16": 646838112,
+        "q8": 1291007603
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "granite-docling-258m",
+      "name": "Granite-Docling-258M",
+      "hf_repo": "onnx-community/granite-docling-258M-ONNX",
+      "task": "vision-language",
+      "params_m": 257.52,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 264311910
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 472120286
+        }
+      },
+      "variants": {
+        "fp16": 632192648,
+        "fp32": 1263876953,
+        "q4": 400028103,
+        "q4f16": 264311910,
+        "q8": 472120286
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "florence-2-large-ft",
+      "name": "Florence-2-large-ft",
+      "hf_repo": "onnx-community/Florence-2-large-ft",
+      "task": "vision-language",
+      "params_m": 770.43,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 713986906
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 1060893077
+        }
+      },
+      "variants": {
+        "bnb4": 878572190,
+        "fp16": 2109209960,
+        "fp32": 4215069940,
+        "q4": 939233135,
+        "q4f16": 713986906,
+        "q8": 2121786031,
+        "uint8": 1060893077
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "whisper-tiny",
+      "name": "Whisper Tiny",
+      "hf_repo": "onnx-community/whisper-tiny",
+      "task": "speech-to-text",
+      "params_m": 37.8,
+      "headline": {
+        "webgpu": {
+          "variant": "fp16",
+          "bytes": 133075065
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 70064760
+        }
+      },
+      "variants": {
+        "bnb4": 179961562,
+        "fp16": 133075065,
+        "fp32": 265097817,
+        "q4": 181508962,
+        "q8": 140129401,
+        "uint8": 70064760
+      },
+      "pipeline_task": "automatic-speech-recognition"
+    },
+    {
+      "id": "whisper-base",
+      "name": "Whisper Base",
+      "hf_repo": "onnx-community/whisper-base",
+      "task": "speech-to-text",
+      "params_m": 72.6,
+      "headline": {
+        "webgpu": {
+          "variant": "fp16",
+          "bytes": 244095639
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 126969816
+        }
+      },
+      "variants": {
+        "bnb4": 259584515,
+        "fp16": 244095639,
+        "fp32": 486637100,
+        "q4": 263711699,
+        "q8": 253939513,
+        "uint8": 126969816
+      },
+      "pipeline_task": "automatic-speech-recognition"
+    },
+    {
+      "id": "whisper-small",
+      "name": "Whisper Small",
+      "hf_repo": "onnx-community/whisper-small",
+      "task": "speech-to-text",
+      "params_m": 241.7,
+      "headline": {
+        "webgpu": {
+          "variant": "fp16",
+          "bytes": 764668995
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 390729822
+        }
+      },
+      "variants": {
+        "bnb4": 504456859,
+        "fp16": 764668995,
+        "fp32": 1526268085,
+        "q4": 523033363,
+        "q8": 781459393,
+        "uint8": 390729822
+      },
+      "pipeline_task": "automatic-speech-recognition"
+    },
+    {
+      "id": "moonshine-base",
+      "name": "Moonshine Base",
+      "hf_repo": "onnx-community/moonshine-base-ONNX",
+      "task": "speech-to-text",
+      "params_m": 61.5,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 143372082
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 101977848
+        }
+      },
+      "variants": {
+        "bnb4": 163752247,
+        "fp16": 278661449,
+        "fp32": 401665040,
+        "q4": 168076857,
+        "q4f16": 143372082,
+        "q8": 204051333,
+        "uint8": 101977848
+      },
+      "pipeline_task": "automatic-speech-recognition"
+    },
+    {
+      "id": "whisper-large-v3-turbo",
+      "name": "Whisper Large v3 Turbo",
+      "hf_repo": "onnx-community/whisper-large-v3-turbo",
+      "task": "speech-to-text",
+      "params_m": 808.88,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 749364426
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 1511299506
+        }
+      },
+      "variants": {
+        "bnb4": 1033192175,
+        "fp16": 1936341699,
+        "fp32": 3871708520,
+        "q4": 1084799335,
+        "q4f16": 749364426,
+        "q8": 3022598891,
+        "uint8": 1511299506
+      },
+      "pipeline_task": "automatic-speech-recognition"
+    },
+    {
+      "id": "moonshine-tiny",
+      "name": "Moonshine Tiny",
+      "hf_repo": "onnx-community/moonshine-tiny-ONNX",
+      "task": "speech-to-text",
+      "params_m": 27.09,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 80194709
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 46853167
+        }
+      },
+      "variants": {
+        "bnb4": 97471229,
+        "fp16": 128811026,
+        "fp32": 182977775,
+        "q4": 99024857,
+        "q4f16": 80194709,
+        "q8": 93777778,
+        "uint8": 46853167
+      },
+      "pipeline_task": "automatic-speech-recognition"
+    },
+    {
+      "id": "voxtral-mini-4b-realtime",
+      "name": "Voxtral Mini 4B Realtime",
+      "hf_repo": "onnx-community/Voxtral-Mini-4B-Realtime-2602-ONNX",
+      "task": "speech-to-text",
+      "params_m": 4429.68,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 2835604336
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 3724575097
+        }
+      },
+      "variants": {
+        "fp16": 4871297853,
+        "fp32": 5753690980,
+        "q4": 2926531867,
+        "q4f16": 2835604336,
+        "q8": 3724575097
+      },
+      "pipeline_task": "automatic-speech-recognition"
+    },
+    {
+      "id": "pyannote-segmentation-3.0",
+      "name": "pyannote Speaker Segmentation 3.0",
+      "hf_repo": "onnx-community/pyannote-segmentation-3.0",
+      "task": "speaker-diarization",
+      "params_m": null,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 2929425
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 1542308
+        }
+      },
+      "variants": {
+        "bnb4": 5815342,
+        "fp16": 3000918,
+        "fp32": 5986908,
+        "q4": 5818448,
+        "q4f16": 2929425,
+        "q8": 3084612,
+        "uint8": 1542308
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "kokoro-82m",
+      "name": "Kokoro-82M",
+      "hf_repo": "onnx-community/Kokoro-82M-v1.0-ONNX",
+      "task": "text-to-speech",
+      "params_m": 82,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 154586422
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 92361116
+        }
+      },
+      "variants": {
+        "fp16": 163234740,
+        "q4": 305215966,
+        "q4f16": 154586422,
+        "q8": 92361116,
+        "uint8": 177464632
+      },
+      "pipeline_task": "text-to-speech"
+    },
+    {
+      "id": "supertonic-tts-2",
+      "name": "Supertonic TTS 2",
+      "hf_repo": "onnx-community/Supertonic-TTS-2-ONNX",
+      "task": "text-to-speech",
+      "params_m": null,
+      "headline": {
+        "webgpu": {
+          "variant": "fp32",
+          "bytes": 262872737
+        },
+        "wasm": {
+          "variant": "fp32",
+          "bytes": 262872737
+        }
+      },
+      "variants": {
+        "fp32": 262872737
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "all-minilm-l6-v2",
+      "name": "all-MiniLM-L6-v2",
+      "hf_repo": "Xenova/all-MiniLM-L6-v2",
+      "task": "embeddings",
+      "params_m": 22.7,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 30018257
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 22845806
+        }
+      },
+      "variants": {
+        "bnb4": 53915448,
+        "fp16": 45297825,
+        "fp32": 90387606,
+        "q4": 54578772,
+        "q4f16": 30018257,
+        "q8": 45944740,
+        "uint8": 22845806
+      },
+      "pipeline_task": "feature-extraction"
+    },
+    {
+      "id": "bge-small-en-v1.5",
+      "name": "bge-small-en-v1.5",
+      "hf_repo": "Xenova/bge-small-en-v1.5",
+      "task": "embeddings",
+      "params_m": 33.4,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 36190171
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 33760859
+        }
+      },
+      "variants": {
+        "bnb4": 60147542,
+        "fp16": 66749212,
+        "fp32": 133093490,
+        "q4": 61474190,
+        "q4f16": 36190171,
+        "q8": 67775257,
+        "uint8": 33760859
+      },
+      "pipeline_task": "feature-extraction"
+    },
+    {
+      "id": "embeddinggemma-300m",
+      "name": "EmbeddingGemma-300M",
+      "hf_repo": "onnx-community/embeddinggemma-300m-ONNX",
+      "task": "embeddings",
+      "params_m": 302.9,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 176115397
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 309458498
+        }
+      },
+      "variants": {
+        "fp16": 618089375,
+        "fp32": 1235001020,
+        "q4": 197245082,
+        "q4f16": 176115397,
+        "q8": 309458498
+      },
+      "pipeline_task": "feature-extraction"
+    },
+    {
+      "id": "gte-multilingual-base",
+      "name": "GTE Multilingual Base",
+      "hf_repo": "onnx-community/gte-multilingual-base",
+      "task": "embeddings",
+      "params_m": 305,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 465204574
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 340318797
+        }
+      },
+      "variants": {
+        "bnb4": 866226340,
+        "fp16": 627988827,
+        "fp32": 1255502649,
+        "q4": 873303844,
+        "q4f16": 465204574,
+        "q8": 680637594,
+        "uint8": 340318797
+      },
+      "pipeline_task": "feature-extraction"
+    },
+    {
+      "id": "qwen3-embedding-0.6b",
+      "name": "Qwen3-Embedding-0.6B",
+      "hf_repo": "onnx-community/Qwen3-Embedding-0.6B-ONNX",
+      "task": "embeddings",
+      "params_m": 595.78,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 567458583
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 613527631
+        }
+      },
+      "variants": {
+        "bnb4": 886593402,
+        "fp16": 1200510818,
+        "fp32": 2400598343,
+        "q4": 914121462,
+        "q4f16": 567458583,
+        "q8": 1227055170,
+        "uint8": 613527631
+      },
+      "pipeline_task": "feature-extraction"
+    },
+    {
+      "id": "bge-m3",
+      "name": "BGE-M3",
+      "hf_repo": "onnx-community/bge-m3-ONNX",
+      "task": "embeddings",
+      "params_m": 569,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 699926120
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 568479466
+        }
+      },
+      "variants": {
+        "bnb4": 1248100641,
+        "fp32": 2267319617,
+        "q4": 1248100641,
+        "q4f16": 699926120,
+        "q8": 1136958790,
+        "uint8": 568479466
+      },
+      "pipeline_task": "feature-extraction"
+    },
+    {
+      "id": "voyage-4-nano",
+      "name": "voyage-4-nano",
+      "hf_repo": "onnx-community/voyage-4-nano-ONNX",
+      "task": "embeddings",
+      "params_m": 346.45,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 211073759
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 421893932
+        }
+      },
+      "variants": {
+        "fp16": 703605360,
+        "fp32": 1406994406,
+        "q4": 243267303,
+        "q4f16": 211073759,
+        "q8": 421893932
+      },
+      "pipeline_task": "feature-extraction"
+    },
+    {
+      "id": "bge-reranker-v2-m3",
+      "name": "BGE Reranker v2 M3",
+      "hf_repo": "onnx-community/bge-reranker-v2-m3-ONNX",
+      "task": "reranker",
+      "params_m": 567.76,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 702120377
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 570727094
+        }
+      },
+      "variants": {
+        "bnb4": 1233652957,
+        "fp16": 1136209678,
+        "fp32": 2271745547,
+        "q4": 1252526149,
+        "q4f16": 702120377,
+        "q8": 1141454188,
+        "uint8": 570727094
+      },
+      "pipeline_task": "text-classification"
+    },
+    {
+      "id": "clip-vit-base-patch32",
+      "name": "CLIP ViT-B/32",
+      "hf_repo": "Xenova/clip-vit-base-patch32",
+      "task": "vision",
+      "params_m": 151.3,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 251617632
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 305458290
+        }
+      },
+      "variants": {
+        "bnb4": 363373339,
+        "fp16": 606935621,
+        "fp32": 1211543291,
+        "q4": 378788443,
+        "q4f16": 251617632,
+        "q8": 460036878,
+        "uint8": 305458290
+      },
+      "pipeline_task": "zero-shot-image-classification"
+    },
+    {
+      "id": "rmbg-1.4",
+      "name": "RMBG-1.4",
+      "hf_repo": "briaai/RMBG-1.4",
+      "task": "vision",
+      "params_m": 44.1,
+      "headline": {
+        "webgpu": {
+          "variant": "fp16",
+          "bytes": 88217533
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 44403226
+        }
+      },
+      "variants": {
+        "fp16": 88217533,
+        "fp32": 176153355,
+        "q8": 44403226
+      },
+      "pipeline_task": "background-removal"
+    },
+    {
+      "id": "modnet",
+      "name": "MODNet",
+      "hf_repo": "Xenova/modnet",
+      "task": "vision",
+      "params_m": 6.5,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 11801931
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 6627048
+        }
+      },
+      "variants": {
+        "bnb4": 23080899,
+        "fp16": 12984781,
+        "fp32": 25888640,
+        "q4": 23132083,
+        "q4f16": 11801931,
+        "q8": 6632188,
+        "uint8": 6627048
+      },
+      "pipeline_task": "background-removal"
+    },
+    {
+      "id": "depth-anything-v2-small",
+      "name": "Depth Anything V2 Small",
+      "hf_repo": "onnx-community/depth-anything-v2-small",
+      "task": "vision",
+      "params_m": 24.8,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 19126267
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 27258801
+        }
+      },
+      "variants": {
+        "bnb4": 26077648,
+        "fp16": 49642442,
+        "fp32": 99060839,
+        "q4": 27404416,
+        "q4f16": 19126267,
+        "q8": 54517602,
+        "uint8": 27258801
+      },
+      "pipeline_task": "depth-estimation"
+    },
+    {
+      "id": "slimsam-77",
+      "name": "SlimSAM-77",
+      "hf_repo": "Xenova/slimsam-77-uniform",
+      "task": "vision",
+      "params_m": 9.7,
+      "headline": {
+        "webgpu": {
+          "variant": "fp16",
+          "bytes": 20720775
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 13785975
+        }
+      },
+      "variants": {
+        "fp16": 20720775,
+        "fp32": 39833906,
+        "q8": 13785975
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "siglip2-base-patch16-224",
+      "name": "SigLIP2 Base Patch16-224",
+      "hf_repo": "onnx-community/siglip2-base-patch16-224-ONNX",
+      "task": "vision",
+      "params_m": 375.19,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 994828997
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 755991743
+        }
+      },
+      "variants": {
+        "bnb4": 1790152569,
+        "fp16": 1501811944,
+        "fp32": 3002563235,
+        "q4": 1812195067,
+        "q4f16": 994828997,
+        "q8": 1511983486,
+        "uint8": 755991743
+      },
+      "pipeline_task": "zero-shot-image-classification"
+    },
+    {
+      "id": "dinov3-vits16",
+      "name": "DINOv3 ViT-S/16",
+      "hf_repo": "onnx-community/dinov3-vits16-pretrain-lvd1689m-ONNX",
+      "task": "vision",
+      "params_m": 21.6,
+      "headline": {
+        "webgpu": {
+          "variant": "q4",
+          "bytes": 14836561
+        },
+        "wasm": {
+          "variant": "q8",
+          "bytes": 21945937
+        }
+      },
+      "variants": {
+        "fp32": 86485745,
+        "q4": 14836561,
+        "q8": 21945937
+      },
+      "pipeline_task": "image-feature-extraction"
+    },
+    {
+      "id": "grounding-dino-tiny",
+      "name": "Grounding DINO Tiny",
+      "hf_repo": "onnx-community/grounding-dino-tiny-ONNX",
+      "task": "vision",
+      "params_m": 172.28,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 151069879
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 203824675
+        }
+      },
+      "variants": {
+        "bnb4": 218129274,
+        "fp16": 360393267,
+        "fp32": 718761381,
+        "q4": 227229745,
+        "q4f16": 151069879,
+        "q8": 407649156,
+        "uint8": 203824675
+      },
+      "pipeline_task": "zero-shot-object-detection"
+    },
+    {
+      "id": "sam2.1-hiera-tiny",
+      "name": "SAM 2.1 Hiera Tiny",
+      "hf_repo": "onnx-community/sam2.1-hiera-tiny-ONNX",
+      "task": "vision",
+      "params_m": 38.96,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 33667410
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 61965721
+        }
+      },
+      "variants": {
+        "bnb4": 49551078,
+        "fp16": 78004244,
+        "fp32": 155610424,
+        "q4": 51481493,
+        "q4f16": 33667410,
+        "q8": 123932099,
+        "uint8": 61965721
+      },
+      "pipeline_task": null
+    },
+    {
+      "id": "birefnet-lite",
+      "name": "BiRefNet Lite",
+      "hf_repo": "onnx-community/BiRefNet_lite-ONNX",
+      "task": "vision",
+      "params_m": 44.36,
+      "headline": {
+        "webgpu": {
+          "variant": "fp16",
+          "bytes": 114538221
+        },
+        "wasm": {
+          "variant": "fp16",
+          "bytes": 114538221
+        }
+      },
+      "variants": {
+        "fp16": 114538221,
+        "fp32": 224005088
+      },
+      "pipeline_task": "background-removal"
+    },
+    {
+      "id": "ben2",
+      "name": "BEN2",
+      "hf_repo": "onnx-community/BEN2-ONNX",
+      "task": "vision",
+      "params_m": 94.63,
+      "headline": {
+        "webgpu": {
+          "variant": "fp16",
+          "bytes": 219121675
+        },
+        "wasm": {
+          "variant": "fp16",
+          "bytes": 219121675
+        }
+      },
+      "variants": {
+        "fp16": 219121675
+      },
+      "pipeline_task": "background-removal"
+    },
+    {
+      "id": "ormbg",
+      "name": "ORMBG",
+      "hf_repo": "onnx-community/ormbg-ONNX",
+      "task": "vision",
+      "params_m": null,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 88117949
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 44315205
+        }
+      },
+      "variants": {
+        "bnb4": 176116038,
+        "fp16": 88117930,
+        "fp32": 176116019,
+        "q4": 176116038,
+        "q4f16": 88117949,
+        "q8": 88630341,
+        "uint8": 44315205
+      },
+      "pipeline_task": "background-removal"
+    },
+    {
+      "id": "punctuate-all",
+      "name": "Punctuate All",
+      "hf_repo": "onnx-community/punctuate-all-ONNX",
+      "task": "utility",
+      "params_m": 278.89,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 433149933
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 278658098
+        }
+      },
+      "variants": {
+        "bnb4": 818186877,
+        "fp16": 555239208,
+        "fp32": 1110154243,
+        "q4": 823495046,
+        "q4f16": 433149933,
+        "q8": 557316196,
+        "uint8": 278658098
+      },
+      "pipeline_task": "token-classification"
+    },
+    {
+      "id": "gliner-small-v2.1",
+      "name": "GLiNER Small v2.1",
+      "hf_repo": "onnx-community/gliner_small-v2.1",
+      "task": "utility",
+      "params_m": 166,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 245226118
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 183403759
+        }
+      },
+      "variants": {
+        "bnb4": 463106905,
+        "fp16": 306253040,
+        "fp32": 611293061,
+        "q4": 463106905,
+        "q4f16": 245226118,
+        "q8": 366807468,
+        "uint8": 183403759
+      },
+      "pipeline_task": "token-classification"
+    },
+    {
+      "id": "piiranha-v1",
+      "name": "Piiranha v1 (PII Detection)",
+      "hf_repo": "onnx-community/piiranha-v1-detect-personal-information-ONNX",
+      "task": "utility",
+      "params_m": 278.23,
+      "headline": {
+        "webgpu": {
+          "variant": "q4f16",
+          "bytes": 453136858
+        },
+        "wasm": {
+          "variant": "uint8",
+          "bytes": 317144829
+        }
+      },
+      "variants": {
+        "bnb4": 857781721,
+        "fp16": 575239383,
+        "fp32": 1149780766,
+        "q4": 863090465,
+        "q4f16": 453136858,
+        "q8": 634289658,
+        "uint8": 317144829
+      },
+      "pipeline_task": "token-classification"
+    }
+  ]
+}

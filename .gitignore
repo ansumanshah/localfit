@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.size-check-tmp/
+*.log
+.DS_Store
+.env
+.env.*
+.claude/
